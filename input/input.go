@@ -8,8 +8,8 @@ import (
 	"runtime"
 )
 
-func Load() ([]string, error) {
-	_, caller, _, ok := runtime.Caller(1)
+func load() ([]string, error) {
+	_, caller, _, ok := runtime.Caller(2)
 	if !ok {
 		return nil, fmt.Errorf("failed to get caller")
 	}
@@ -27,4 +27,16 @@ func Load() ([]string, error) {
 		lines = append(lines, scanner.Text())
 	}
 	return lines, scanner.Err()
+}
+
+func Load() ([]string, error) {
+	return load()
+}
+
+func MustLoad() []string {
+	input, err := load()
+	if err != nil {
+		panic(fmt.Errorf("failed to load: %w", err))
+	}
+	return input
 }
