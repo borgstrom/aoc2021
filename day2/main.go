@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/borgstrom/aoc2021/input"
@@ -82,13 +81,9 @@ func loadCommands() []command {
 	out := make([]command, 0)
 	for _, s := range input.MustLoad() {
 		parts := strings.Split(s, " ")
-		amount, err := strconv.Atoi(parts[1])
-		if err != nil {
-			panic(fmt.Errorf("failed to convert command amount: %w", err))
-		}
 		out = append(out, command{
 			direction: parts[0],
-			amount: amount,
+			amount: input.MustAtoi(parts[1]),
 		})
 	}
 	return out

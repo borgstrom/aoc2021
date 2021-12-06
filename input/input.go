@@ -6,6 +6,8 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
+	"strings"
 )
 
 func load() ([]string, error) {
@@ -39,4 +41,12 @@ func MustLoad() []string {
 		panic(fmt.Errorf("failed to load: %w", err))
 	}
 	return input
+}
+
+func MustAtoi(s string) int {
+	i, err := strconv.Atoi(strings.TrimSpace(s))
+	if err != nil {
+		panic(err)
+	}
+	return i
 }

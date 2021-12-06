@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/borgstrom/aoc2021/input"
@@ -115,11 +114,7 @@ func parseNumbers(raw string) []int {
 	l := len(s)
 	n := make([]int, l)
 	for x := 0; x < l; x++ {
-		i, err := strconv.Atoi(s[x])
-		if err != nil {
-			panic(err)
-		}
-		n[x] = i
+		n[x] = input.MustAtoi(s[x])
 	}
 	return n
 }
@@ -134,11 +129,7 @@ func parseBoards(raw []string) boards {
 		b := &board{}
 		for n := 0; n < 5; n++ {
 			for x, s := range strings.Fields(raw[i+n]) {
-				i, err := strconv.Atoi(s)
-				if err != nil {
-					panic(err)
-				}
-				b.data[n][x] = i
+				b.data[n][x] = input.MustAtoi(s)
 			}
 		}
 		boards = append(boards, b)

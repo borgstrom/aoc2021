@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"strconv"
 
 	"github.com/borgstrom/aoc2021/input"
 )
@@ -106,12 +105,7 @@ func readings() []int {
 			continue
 		}
 
-		reading, err := strconv.Atoi(s)
-		if err != nil {
-			panic(err)
-		}
-
-		out = append(out, reading)
+		out = append(out, input.MustAtoi(s))
 	}
 
 	return out
