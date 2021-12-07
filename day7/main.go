@@ -73,9 +73,7 @@ func (c crabs) alignTo(pos int, constant bool) (cost int) {
 		if constant {
 			cost += x
 		} else {
-			for y := 1; y <= x; y++ {
-				cost += y
-			}
+			cost += x * (x + 1) / 2
 		}
 	}
 	return
