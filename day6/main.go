@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/borgstrom/aoc2021/input"
 )
@@ -27,16 +26,17 @@ func (s school) count() int {
 }
 
 func loadInput(raw string) school {
-	nums := strings.Split(raw, ",")
+	nums := input.CommaInts(raw)
 
 	s := school{0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0}
 
 	for _, num := range nums {
-		s[input.MustAtoi(num)]++
+		s[num]++
 	}
 
 	return s
 }
+
 func main() {
 	i := input.MustLoad()
 	s := loadInput(i[0])
