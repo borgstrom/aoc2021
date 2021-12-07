@@ -50,3 +50,12 @@ func MustAtoi(s string) int {
 	}
 	return i
 }
+
+func CommaInts(s string) []int {
+	ints := strings.Split(s, ",")
+	out := make([]int, len(ints))
+	for x, i := range ints {
+		out[x] = MustAtoi(i)
+	}
+	return out
+}
