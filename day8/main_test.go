@@ -14,3 +14,11 @@ func TestFirst(t *testing.T) {
 	count := countEasyDigits(raw)
 	require.Equal(t, 26, count)
 }
+
+func TestPattern(t *testing.T) {
+	require.Equal(t, "5353", digitPattern("acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"))
+}
+
+//func TestSecond(t *testing.T) {
+//	raw := strings.Split(testInput, "\n")
+//}
